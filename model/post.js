@@ -1,8 +1,34 @@
 const mongoose = require('mongoose');
+
+
+const commentSchema = new mongoose.Schema(
+    {
+        user: {
+            type: mongoose.Schema.ObjectId,
+            ref: 'user',
+            required: [true, 'User Id 未填寫']
+        },
+        content: {
+            type: String,
+            required: [true, 'content 未填寫']
+        },
+        createAt: {
+            type: Date,
+            default: Date.now,
+            select: false
+        },
+    },
+    {
+        versionKey: false
+    }
+)
+
+
 const postsSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, '貼文姓名未填寫']
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'user',
+        required: [true, 'User Id 未填寫']
     },
     tags: [
         {
@@ -12,8 +38,8 @@ const postsSchema = new mongoose.Schema({
     ],
     type: {
         type: String,
-        enum: ['group', 'person'],
-        required: [true, '貼文類型 type 未填寫']
+        enum: ['global', 'personal'],
+        default: 'global'
     },
     image: {
         type: String,
@@ -21,8 +47,7 @@ const postsSchema = new mongoose.Schema({
     },
     createAt: {
         type: Date,
-        default: Date.now,
-        select: false
+        default: Date.now
     },
     content: {
         type: String,
@@ -32,11 +57,9 @@ const postsSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    comments: {
-        type: Number,
-        default: 0
-    },
+    comments: [ commentSchema ],
 });
+
 
 const posts = mongoose.model(
     'posts',

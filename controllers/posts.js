@@ -14,9 +14,7 @@ const post = {
             if (body.content) {
                 const newPost = await Posts.create({
                     name: body.name,
-                    content: body.content,
-                    tags: body.tags,
-                    type: body.type
+                    content: body.content
                 })
                 handleSuccess(res, newPost)
             } else {
@@ -25,6 +23,22 @@ const post = {
         } catch (error) {
             handleError(res, error)
         }
+    },
+    async createComment(req, res) {
+        const { postId } = req.params
+        
+        let postRes = await Posts.findById(postId)
+        if (!postRes) handleError(res, "沒有找到該貼文")
+
+        const { body } = req
+        let newComment = await Posts.findByIdAndUpdate(postId, {
+            $push: {
+                user: body.userId,
+                content: body.content,
+                likes: req.Body.likes
+            }
+        })
+        handleSuccess(res, newComment)
     }
 }
 
