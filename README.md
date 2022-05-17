@@ -1,11 +1,10 @@
 # Express
 
-## 從 express MVC 架構建立 RESTful API
+## 打造全端 (Full Stack) 網站架構
 
 
 ## 主線任務
-> routes： 將網址路徑管理拆到 routes 資料夾的 posts.js
-> model：將 post collections 拆到 model 資料夾，並載入到 routes/posts.js 上
+> 整合 user model，只做後端 API
 
 
 ### 資料夾結構
