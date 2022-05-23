@@ -7,6 +7,5 @@ const PostsControllers = require('../controllers/posts')
 router.get('/', PostsControllers.getPosts)
 // 新增貼文
 router.post('/', PostsControllers.createPosts)
-// 留言
-router.post('/comment/:postId', PostsControllers.createComment)
+
 module.exports = router;
