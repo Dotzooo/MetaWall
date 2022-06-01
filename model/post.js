@@ -4,7 +4,7 @@ const postsSchema = new mongoose.Schema(
     {
         user: {
             type: mongoose.Schema.ObjectId,
-            ref: 'user',
+            ref: 'User',
             required: [true, 'User Id 未填寫']
         },
         tags: [
