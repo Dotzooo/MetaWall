@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "d7c94db4-0104-4915-984c-b412aa1c17e4",
 		"name": "metaWall(第四週主線)",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12172279"
 	},
 	"item": [
 		{
@@ -28,12 +29,24 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/posts",
+					"raw": "{{url}}/posts?q&sort=asc",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"posts"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": null,
+							"description": "關鍵字"
+						},
+						{
+							"key": "sort",
+							"value": "asc",
+							"description": "排序"
+						}
 					]
 				}
 			},
@@ -46,7 +59,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"userID\": \"628af3325625388ec1783221\",\r\n    \"name\": \"Adam\",\r\n    \"tags\": \"新手發文\",\r\n    \"image\": \"\",\r\n    \"content\": \"WELCOME TO MY BORAD\"\r\n}",
+					"raw": "{\r\n    \"userID\": \"628c4c411c2126f35a49b629\",\r\n    \"name\": \"Adam\",\r\n    \"tags\": \"新手發文\",\r\n    \"image\": \"\",\r\n    \"content\": \"WELCOME TO MY BORAD\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -54,12 +67,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/posts",
+					"raw": "{{url}}/post",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"posts"
+						"post"
 					]
 				}
 			},
